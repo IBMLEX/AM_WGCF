@@ -1,7 +1,5 @@
-#!/bin/bash
-
 echo "Установка зависимостей..."
-sudo apt-get update -y --fix-missing && sudo apt-get install wireguard-tools jq -y --fix-missing
+sudo apt-get update -y && sudo apt-get install wireguard-tools jq -y
 
 priv="${1:-$(wg genkey)}"
 pub="${2:-$(echo "${priv}" | wg pubkey)}"
@@ -62,3 +60,5 @@ config_file="${desktop_path}/WARP${random_digits}.conf"
 echo "${conf}" > "${config_file}"
 
 echo "Конфигурационный файл сохранен на рабочем столе как ${config_file}"
+
+conf_base64=$(echo -n "${conf}" | base64 -w 0)
