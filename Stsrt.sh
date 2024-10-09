@@ -1,3 +1,5 @@
+#!/bin/bash
+
 echo "Установка зависимостей..."
 sudo apt-get update -y && sudo apt-get install wireguard-tools jq -y
 
@@ -60,5 +62,3 @@ config_file="${desktop_path}/WARP${random_digits}.conf"
 echo "${conf}" > "${config_file}"
 
 echo "Конфигурационный файл сохранен на рабочем столе как ${config_file}"
-
-conf_base64=$(echo -n "${conf}" | base64 -w 0)
