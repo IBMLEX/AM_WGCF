@@ -4,7 +4,6 @@ clear
 mkdir -p ~/.cloudshell && touch ~/.cloudshell/no-apt-get-warning
 echo "Установка зависимостей..."
 sudo apt-get update -y --fix-missing && sudo apt-get install wireguard-tools jq -y --fix-missing
-
 priv="${1:-$(wg genkey)}"
 pub="${2:-$(echo "${priv}" | wg pubkey)}"
 api="https://api.cloudflareclient.com/v0i1909051800"
@@ -62,5 +61,4 @@ fi
 # Сохранение конфига в файл
 config_file="${desktop_path}/WARP${random_digits}.conf"
 echo "${conf}" > "${config_file}"
-
 echo "Конфигурационный файл сохранен на рабочем столе как ${config_file}"
